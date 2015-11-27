@@ -1,16 +1,16 @@
 {
   "name": "top-dependents",
-  "version": "1.0.0",
   "description": "Fetches the top dependents for the given NPM module",
   "main": "index.js",
   "scripts": {
     "test": "mocha spec",
     "lint": "eslint index.js spec/*.js",
-    "commit": "commit-wizard"
+    "commit": "commit-wizard",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bahmutov/top-dependents.git"
+    "url": "https://github.com/bahmutov/top-dependents.git"
   },
   "keywords": [
     "npm",
@@ -43,7 +43,8 @@
   "devDependencies": {
     "eslint": "1.10.1",
     "mocha": "2.3.4",
-    "pre-git": "1.4.0"
+    "pre-git": "1.4.0",
+    "semantic-release": "^4.3.5"
   },
   "dependencies": {
     "check-more-types": "2.2.0",
