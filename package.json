@@ -6,8 +6,12 @@
     "test": "mocha spec",
     "lint": "eslint index.js spec/*.js",
     "commit": "commit-wizard",
+    "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
+  "files": [
+    "index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/bahmutov/top-dependents.git"
@@ -35,7 +39,9 @@
         "npm run lint",
         "npm test"
       ],
-      "pre-push": [],
+      "pre-push": [
+        "npm run size"
+      ],
       "post-commit": [],
       "post-merge": []
     }
