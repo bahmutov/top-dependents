@@ -76,8 +76,10 @@ function getTopDependents(name, n) {
   });
 }
 
-module.exports = {
+var api = {
   topDependents: getTopDependents,
   downloads: fetchDownloadsForEachDependent,
   sortedByDownloads: sortedByDownloads
 };
+
+module.exports = api;

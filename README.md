@@ -8,6 +8,31 @@
 [![dependencies][top-dependents-dependencies-image] ][top-dependents-dependencies-url]
 [![devdependencies][top-dependents-devdependencies-image] ][top-dependents-devdependencies-url]
 [![semantic-release][semantic-image] ][semantic-url]
+[![alternate](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
+
+## Install
+
+    npm install --save top-dependents
+
+## API
+
+```js
+var topDeps = require('top-dependents');
+// returns an Api object
+```
+
+The module's api has the following promise-returning methods
+
+```js
+topDeps.topDependents(name, n)
+  .then(function (list) {
+    // list is Array of strings - names of dependent modules
+  });
+/*
+  example: topDeps.topDependents('heroin', 10)
+    returns ['opiate', 'qunit-inject']
+*/
+```
 
 ### Small print
 

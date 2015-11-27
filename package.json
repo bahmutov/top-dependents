@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha spec",
     "lint": "eslint index.js spec/*.js",
-    "commit": "commit-wizard",
+    "commit": "git-issues && commit-wizard",
+    "issues": "git-issues",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -49,6 +50,7 @@
   },
   "devDependencies": {
     "eslint": "1.10.1",
+    "git-issues": "1.2.0",
     "mocha": "2.3.4",
     "pre-git": "1.4.0",
     "semantic-release": "^4.3.5"

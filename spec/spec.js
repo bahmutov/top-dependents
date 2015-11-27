@@ -10,14 +10,34 @@ describe('top dependents', function () {
     la(check.object(lib));
   });
 
-  var libSchema = {
-    topDependents: check.fn,
-    downloads: check.fn,
-    sortedByDownloads: check.fn
-  };
-  var isValidSchema = _.partial(check.schema, libSchema);
-
   it('respects schema', function () {
+    var libSchema = {
+      topDependents: check.fn,
+      downloads: check.fn,
+      sortedByDownloads: check.fn
+    };
+    var isValidSchema = _.partial(check.schema, libSchema);
     la(isValidSchema(lib), 'invalid schema', lib);
   });
+
+  it('can fetch top dependents', function () {
+    var name = 'heroin';
+    return lib.topDependents(name, 10)
+      .then(function (list) {
+        console.log('top dependents for %s', name);
+        console.log(list);
+        la(check.arrayOf(check.unemptyString, list), 'invalid list', list);
+      });
+  });
+
+  it('can fetch top dependents', function () {
+    var name = 'heroin';
+    return lib.topDependents(name, 10)
+      .then(function (list) {
+        console.log('top dependents for %s', name);
+        console.log(list);
+        la(check.arrayOf(check.unemptyString, list), 'invalid list', list);
+      });
+  });
+
 });
