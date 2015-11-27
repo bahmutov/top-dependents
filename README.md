@@ -8,7 +8,7 @@
 [![dependencies][top-dependents-dependencies-image] ][top-dependents-dependencies-url]
 [![devdependencies][top-dependents-devdependencies-image] ][top-dependents-devdependencies-url]
 [![semantic-release][semantic-image] ][semantic-url]
-[![alternate](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
+[![manpm](https://img.shields.io/badge/manpm-%E2%9C%93-3399ff.svg)](https://github.com/bahmutov/manpm)
 
 ## Install
 
