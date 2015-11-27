@@ -49,6 +49,21 @@ topDeps.infoForDependents(metric, listOfNames)
   });
 ```
 
+### sortedByValue(object)
+
+Takes an object where all values are numbers and returns list of properties
+corresponding to the values sorted in descending order. Provided for convenience.
+
+```js
+var what = {
+  a: 100,
+  b: 20,
+  c: 50
+};
+var sorted = topDeps.sortedByValue(what);
+// sorted is ['a', 'c', 'b']
+```
+
 ### Small print
 
 Author: Gleb Bahmutov &copy; 2015

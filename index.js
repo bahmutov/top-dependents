@@ -13,8 +13,12 @@ function isValidMetric(metric) {
   return metric === 'downloads' || metric === 'starred';
 }
 
-function sortedByValues(what) {
-  var list = _.pairs(what);
+function sortedByValue(o) {
+  la(check.object(o), 'expected an object', o);
+  la(check.arrayOf(check.number, _.values(o)),
+    'expected values to be numbers', o);
+
+  var list = _.pairs(o);
   // [[name, n], [name, n], ...]
   var sorted = _.sortBy(list, '1').reverse();
   // sorts by number, largest first
@@ -86,7 +90,7 @@ function getTopDependents(name, n) {
 var api = {
   topDependents: getTopDependents,
   infoForDependents: fetchInfoForEachDependent,
-  sortedByValues: sortedByValues,
+  sortedByValue: sortedByValue,
   isValidMetric: isValidMetric
 };
 

@@ -14,13 +14,15 @@ describe('top dependents', function () {
     var libSchema = {
       topDependents: check.fn,
       infoForDependents: check.fn,
-      sortedByValues: check.fn
+      sortedByValue: check.fn
     };
     var isValidSchema = _.partial(check.schema, libSchema);
     la(isValidSchema(lib), 'invalid schema', lib);
   });
 
   it('can fetch top dependents', function () {
+    this.timeout(10000);
+
     var name = 'heroin';
     return lib.topDependents(name, 10)
       .then(function (list) {
@@ -31,6 +33,8 @@ describe('top dependents', function () {
   });
 
   it('can fetch information for dependents', function () {
+    this.timeout(10000);
+
     la(check.fn(lib.infoForDependents));
     var list = ['obind', 'qunit-inject'];
     var metric = 'downloads';
@@ -44,6 +48,19 @@ describe('top dependents', function () {
         la(check.arrayOf(check.number, _.values(results)),
           'expected values to be numbers', results);
       });
+  });
+
+  // TODO use xplain to document api
+  it('has sort helper', function () {
+    var what = {
+      a: 100,
+      b: 20,
+      c: 50
+    };
+    var sorted = lib.sortedByValue(what);
+    la(check.array(sorted));
+    la(_.isEqual(sorted, ['a', 'c', 'b']),
+      'did not sort in descending order', sorted);
   });
 
 });
