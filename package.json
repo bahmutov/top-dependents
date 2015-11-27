@@ -1,0 +1,42 @@
+{
+  "name": "top-dependents",
+  "version": "1.0.0",
+  "description": "Fetches the top dependents for the given NPM module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "commit-wizard"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/top-dependents.git"
+  },
+  "keywords": [
+    "npm",
+    "node",
+    "registry",
+    "dependency",
+    "dependent",
+    "dependencies",
+    "top",
+    "list"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahmutov/top-dependents/issues"
+  },
+  "homepage": "https://github.com/bahmutov/top-dependents#readme",
+  "config": {
+    "pre-git": {
+      "commit-msg": "validate-commit-msg",
+      "pre-commit": [],
+      "pre-push": [],
+      "post-commit": [],
+      "post-merge": []
+    }
+  },
+  "devDependencies": {
+    "pre-git": "1.4.0"
+  }
+}
