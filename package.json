@@ -1,6 +1,7 @@
 {
   "name": "top-dependents",
   "description": "Fetches the top dependents for the given NPM module",
+  "version": "0.0.0-semantic-release",
   "main": "index.js",
   "scripts": {
     "test": "mocha spec",
