@@ -8,8 +8,13 @@ var npm = new Registry();
 
 var downloads = {};
 
-function sortedByDownloads() {
-  var list = _.pairs(downloads);
+function isValidMetric(metric) {
+  la(check.unemptyString(metric), 'expected string metric name', metric);
+  return metric === 'downloads' || metric === 'starred';
+}
+
+function sortedByValues(what) {
+  var list = _.pairs(what);
   // [[name, n], [name, n], ...]
   var sorted = _.sortBy(list, '1').reverse();
   // sorts by number, largest first
@@ -44,12 +49,12 @@ function topStarred(name) {
 }
 
 function fetchDownloads(metric, name) {
-  la(metric === 'downloads' || metric === 'starred', 'invalid metric', metric);
+  la(isValidMetric(metric), 'invalid metric', metric);
   la(check.unemptyString(name), 'invalid package name', name);
   return metric === 'downloads' ? topDownloads(name) : topStarred(name);
 }
 
-function fetchDownloadsForEachDependent(metric, dependents) {
+function fetchInfoForEachDependent(metric, dependents) {
   la(check.arrayOfStrings(dependents), 'invalid dependents', dependents);
   var actions = dependents.map(function (name) {
     return _.partial(fetchDownloads, metric, name);
@@ -59,7 +64,9 @@ function fetchDownloadsForEachDependent(metric, dependents) {
   /* jshint -W064 */
   /* eslint new-cap:0 */
   var fetchSequence = actions.reduce(Q.when, Q());
-  return fetchSequence;
+  return fetchSequence.then(function () {
+    return downloads;
+  });
 }
 
 function getTopDependents(name, n) {
@@ -78,8 +85,9 @@ function getTopDependents(name, n) {
 
 var api = {
   topDependents: getTopDependents,
-  downloads: fetchDownloadsForEachDependent,
-  sortedByDownloads: sortedByDownloads
+  infoForDependents: fetchInfoForEachDependent,
+  sortedByValues: sortedByValues,
+  isValidMetric: isValidMetric
 };
 
 module.exports = api;

@@ -23,6 +23,8 @@ var topDeps = require('top-dependents');
 
 The module's api has the following promise-returning methods
 
+### topDependents(packageName, maxNumber)
+
 ```js
 topDeps.topDependents(name, n)
   .then(function (list) {
@@ -32,6 +34,19 @@ topDeps.topDependents(name, n)
   example: topDeps.topDependents('heroin', 10)
     returns ['opiate', 'qunit-inject']
 */
+```
+
+### infoForDependents(metric, listOfNames)
+
+Fetches given metric for a list of package names. Available metrics
+are "downloads" and "starred".
+
+```js
+topDeps.infoForDependents(metric, listOfNames)
+  .then(function (results) {
+    // results { dependentA: X, dependentB: Y }
+    // where X, Y are metrics
+  });
 ```
 
 ### Small print
