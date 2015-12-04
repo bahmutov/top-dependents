@@ -13,6 +13,7 @@ function isValidMetric(metric) {
   return metric === 'downloads' || metric === 'starred';
 }
 
+// TODO move to k2
 function sortedByValue(o) {
   la(check.object(o), 'expected an object', o);
   la(check.arrayOf(check.number, _.values(o)),
