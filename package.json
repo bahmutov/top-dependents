@@ -58,7 +58,7 @@
   "dependencies": {
     "check-more-types": "2.2.0",
     "lazy-ass": "1.1.0",
-    "lodash": "3.10.1",
+    "lodash": "4.17.19",
     "npm-registry": "0.1.13",
     "q": "1.4.1"
   }
